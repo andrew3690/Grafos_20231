@@ -27,7 +27,7 @@ class Grafo:
 
         return lines
     
-    # Constroi matriz
+    # Build matriz
     def ConstroiMatriz(self):
         # Using params as an emptry matrix, vertices and inf values to represent 
         matrix = self.matrix
@@ -57,13 +57,13 @@ class Grafo:
         #return matrix
         return matrix
     
-    # Retorna a quantidade de vertices
+    # Returns how many vertxes on the graph
     def QtdVertices(self):
         linha = self.linhas
 
         val = linha[0]
 
-        self.vertices = val[9:]
+        self.vertices = int(val[9:])
 
         return self.vertices
     
@@ -79,7 +79,11 @@ class Grafo:
 
     #Verifica se há aresta
     def HaAresta(self,v1,v2):
-        return True if self.matriz[v1][v2] != self.inf else False
+        return True if self.matrix[v1][v2] != self.inf else False
+    
+    def GetWeight(self,v1,v2):
+        # Visa o obter o peso da aresta entre v1 e v2
+        return self.matrix[v1][v2]
 
     # Retorna o grau do vértice
     def grau(self,vertice):
@@ -89,36 +93,46 @@ class Grafo:
     def Rotulo(self):
         linhas = self.linhas
         rotulos = []
+        self.rotulo = {}
 
         for i in linhas:
             if i == '*edges':
                 break
             else:
                 rotulos.append(i)
-
+        
         for j in rotulos:
-            rotulos = j.split(" ")
-
-        self.rotulo = rotulos
-
-        return rotulos
-    
-    # obtém valores de rótulos
-    def getRotulo(self,vertice):
+            rot = j.split(" ")
+            self.rotulo.update({rot[0]:rot[1:]})
+        
         return self.rotulo
 
-    # Retorna o peso do vértice
-    def peso(self,vertice1,vertice2):
-        pass
+    # obtém valores de rótulos
+    def getRotulo(self,rotulo):
+        dick = self.rotulo
+        rotulo = str(rotulo)
 
+        if rotulo in dick.keys():
+            print(dick[rotulo])
+        else:
+            print("Rótulo não existente")
+        
+        
     # Retorna os vizinhos do vertice
     def vizinhos(self,vertice):
-        pass
+        vizinhos = []
+        
+        for i in range (0,self.vertices):
+            if self.matrix[vertice][i] != self.inf:
+                vizinhos.append(i)
+            else:
+                pass
 
+        return vizinhos
 
 if __name__ == '__main__':
     
-    filex = 'T1/Instancias/facebook_santiago.net'
+    filex = 'Instancias/facebook_santiago.net'
     
     g = Grafo(filex)
     
@@ -131,3 +145,7 @@ if __name__ == '__main__':
     g.Rotulo()
 
     print(g.getRotulo(22))
+
+    print(g.GetWeight(86,114))
+
+    print(g.vizinhos(86))
