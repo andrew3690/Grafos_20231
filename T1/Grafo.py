@@ -31,7 +31,7 @@ class Grafo:
     def ConstroiMatriz(self):
         # Using params as an emptry matrix, vertices and inf values to represent 
         matrix = self.matrix
-        vertices = int(self.vertices) + 1
+        vertices = self.vertices + 1
         inf = self.inf
         linhas = self.linhas
 
@@ -44,11 +44,10 @@ class Grafo:
         for i in range(vals,len(linhas)):
             linha = linhas[i].split(" ")
             submatrix.append(linha)
-        
+
         #Inserting values into empty matrix
         for i in submatrix:
             v1,v2,v3 = int(i[0]),int(i[1]), i[2]
-            #print("v1 = %i, v2 = %i"%(v1,v2))
             matrix[v1][v2] = v3
         
         # saving matrix
@@ -121,7 +120,7 @@ class Grafo:
     # Retorna os vizinhos do vertice
     def vizinhos(self,vertice):
         vizinhos = []
-        
+
         for i in range (0,self.vertices):
             if self.matrix[vertice][i] != self.inf:
                 vizinhos.append(i)
@@ -132,20 +131,19 @@ class Grafo:
 
 if __name__ == '__main__':
     
-    filex = 'Instancias/facebook_santiago.net'
+    filex = 'T1/Instancias/facebook_santiago.net'
     
     g = Grafo(filex)
     
     g.OpenFile()
 
-    g.QtdVertices()
+
+    print(g.QtdVertices())
 
     g.ConstroiMatriz()
 
     g.Rotulo()
 
-    print(g.getRotulo(22))
+    print(g.vizinhos(86)) 
 
-    print(g.GetWeight(86,114))
-
-    print(g.vizinhos(86))
+    print(g.qtdArestas())
