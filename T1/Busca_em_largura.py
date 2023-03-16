@@ -37,7 +37,7 @@ def BuscaL(grafo, vertice):
             proximo.extend(nao_visitados)
         
         print("%d: "%(nivel), end = ' ')
-        print(",".join(map(lambda y:str(y+1),atual)))
+        print(",".join(map(lambda y:str(y),atual)))
 
         if len(proximo) == 0:
             break
