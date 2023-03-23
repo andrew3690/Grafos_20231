@@ -1,6 +1,7 @@
 from Grafo import Grafo
 
-def BuscaL(grafo, vertice):
+def BuscaL(grafo,vertice):
+
     grafo = Grafo(grafo)
 
     grafo.OpenFile()
@@ -8,7 +9,8 @@ def BuscaL(grafo, vertice):
     grafo.QtdVertices()
 
     grafo.ConstroiMatriz()
-
+    
+    grafo = Grafo(grafo)
     # obtém a quantidade de vértices do Grafo
     vertices = grafo.QtdVertices()
     # vetor de vértices visitados
@@ -22,6 +24,7 @@ def BuscaL(grafo, vertice):
         atual = proximo.copy()
         proximo = []
 
+        #
         for i in range(len(atual)):
             # inserção de elementos a serem visitados no atual
             v = atual[i]
@@ -37,17 +40,15 @@ def BuscaL(grafo, vertice):
             proximo.extend(nao_visitados)
         
         print("%d: "%(nivel), end = ' ')
-        print(",".join(map(lambda y:str(y),atual)))
+        print(",".join(map(lambda y:str(y+1),atual)))
 
         if len(proximo) == 0:
             break
 
         nivel += 1
-
-
-if __name__ == '__main__':
-    file = 'T1/Instancias/facebook_santiago.net'
     
-    vertice = int(input("Vertice: "))
+if __name__ == '__main__':
+    grafo = 'Instancias/facebook_santiago.net'
+    v = int(input("vertice inicial: \n "))
 
-    BuscaL(file,vertice)
+    BuscaL(grafo,v)
