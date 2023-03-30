@@ -46,14 +46,8 @@ def BuscaL(grafo,vertice):
             break
 
         nivel += 1
-<<<<<<< HEAD
 
 
-if __name__ == '__main__':
-    file = 'Instancias/facebook_santiago.net'
-=======
->>>>>>> c43daa2622bf987d3c5ee5e7f5a44f66b16bc0e1
-    
 if __name__ == '__main__':
     grafo = 'Instancias/facebook_santiago.net'
     v = int(input("vertice inicial: \n "))
