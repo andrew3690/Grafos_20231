@@ -52,18 +52,20 @@ def ciclo_euler(grafo):
 
         # loop de verificação do subciclo euleriano, verifica se consegue chegar ao vértice incial percorrendo a vizinhança
         while True:
+            proximo = vertices_usados[atual]
+            print(proximo)
+
+            if atual == inicio:
+                break
 
             # 12, 40, 53, 98, 131, 143, 147, 150, 168, 169, 206, 207, 211, 
             # 221, 227, 237, 239, 241, 244, 250, 256, 257, 260, 269, 283, 
             # 294, 299, 302, 315, 317, 322, 328, 336, 342, 349, 367, 387, 
             # 412, 433, 451, 506, 512, 521, 534, 542, 
             # 554, 562, 565, 573, 577, 586, 589, 591, 649, 653, 657, 662
-            
-            # retira o próximo vértice do vetor de vizinhos
-            proximo = vertices_usados[atual]
-            
-    return (True, ciclo)
-            
+
+    return retval
+    
 if __name__ == '__main__':
     grafo = 'Instancias/facebook_santiago.net'
 

@@ -10,7 +10,6 @@ def BuscaL(grafo,vertice):
 
     grafo.ConstroiMatriz()
     
-    grafo = Grafo(grafo)
     # obtém a quantidade de vértices do Grafo
     vertices = grafo.QtdVertices()
     # vetor de vértices visitados

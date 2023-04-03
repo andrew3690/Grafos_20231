@@ -49,7 +49,7 @@ class Grafo:
         for i in submatrix:
             v1,v2,v3 = int(i[0]),int(i[1]), i[2]
             #print("v1 = %i, v2 = %i"%(v1,v2))
-            matrix[v1][v2] = v3
+            matrix[v1][v2] = int(v3)
         
         # saving matrix
         self.matrix = matrix
